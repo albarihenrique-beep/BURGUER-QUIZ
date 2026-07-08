@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Burger King</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#F4A300,#D62300);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:90%;
+    max-width:800px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+
+h1{
+    text-align:center;
+    color:#D62300;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.pergunta{
+    margin-bottom:30px;
+    padding:20px;
+    background:#fff5ec;
+    border-radius:15px;
+    border-left:8px solid #D62300;
+}
+
+.pergunta h3{
+    margin-bottom:15px;
+    color:#D62300;
+}
+
+label{
+    display:block;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+label:hover{
+    background:#ffe3c4;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:12px;
+    background:#D62300;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#a91b00;
+}
+
+#resultado{
+    margin-top:25px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#D62300;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🍔 Quiz Burger King 🍟</h1>
+<p>Responda às perguntas e descubra quanto você conhece sobre o Burger King!</p>
+
+<form id="quiz">
+
+<div class="pergunta">
+<h3>1. Qual é o sanduíche mais famoso do Burger King?</h3>
+
+<label><input type="radio" name="q1" value="0"> Big Mac</label>
+<label><input type="radio" name="q1" value="1"> Whopper</label>
+<label><input type="radio" name="q1" value="0"> McChicken</label>
+<label><input type="radio" name="q1" value="0"> Cheddar McMelt</label>
+
+</div>
+
+<div class="pergunta">
+<h3>2. Qual ingrediente faz parte da receita tradicional do Whopper?</h3>
+
+<label><input type="radio" name="q2" value="0"> Abacaxi</label>
+<label><input type="radio" name="q2" value="0"> Molho barbecue exclusivo</label>
+<label><input type="radio" name="q2" value="1"> Tomate fresco</label>
+<label><input type="radio" name="q2" value="0"> Ovo frito</label>
+
+</div>
+
+<div class="pergunta">
+<h3>3. Como as carnes do Burger King são preparadas?</h3>
+
+<label><input type="radio" name="q3" value="0"> Cozidas no vapor</label>
+<label><input type="radio" name="q3" value="0"> Fritas em óleo</label>
+<label><input type="radio" name="q3" value="1"> Grelhadas na chama</label>
+<label><input type="radio" name="q3" value="0"> Assadas em forno elétrico</label>
+
+</div>
+
+<div class="pergunta">
+<h3>4. Qual destas bebidas é normalmente encontrada no Burger King?</h3>
+
+<label><input type="radio" name="q4" value="0"> Suco de açaí</label>
+<label><input type="radio" name="q4" value="1"> Refrigerante</label>
+<label><input type="radio" name="q4" value="0"> Água de coco artesanal</label>
+<label><input type="radio" name="q4" value="0"> Chá de hibisco</label>
+
+</div>
+
+<div class="pergunta">
+<h3>5. Qual destas opções costuma fazer parte do cardápio do Burger King?</h3>
+
+<label><input type="radio" name="q5" value="0"> Pizza Calabresa</label>
+<label><input type="radio" name="q5" value="0"> Sushi</label>
+<label><input type="radio" name="q5" value="0"> Lasanha</label>
+<label><input type="radio" name="q5" value="1"> Batata Frita</label>
+
+</div>
+
+<button type="button" onclick="corrigir()">
+Finalizar Quiz
+</button>
+
+</form>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+function corrigir(){
+
+let pontos = 0;
+
+for(let i=1;i<=5;i++){
+
+let resposta=document.querySelector('input[name="q'+i+'"]:checked');
+
+if(resposta){
+pontos += Number(resposta.value);
+}
+
+}
+
+let texto="";
+
+if(pontos==5){
+texto="🍔 Parabéns! Você acertou todas as perguntas! ("+pontos+"/5)";
+}
+else if(pontos>=3){
+texto="👏 Muito bem! Você fez "+pontos+" de 5 pontos.";
+}
+else{
+texto="🙂 Você fez "+pontos+" de 5 pontos. Tente novamente!";
+}
+
+document.getElementById("resultado").innerHTML=texto;
+
+}
+
+</script>
+
+</body>
+</html>
